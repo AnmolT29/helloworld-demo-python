@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+  namespace: python-app
+  labels:
+    app: hello-world
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: app-py
+        image: anmolt/helloworld-demo-python:v1
+        ports:
+        - containerPort: 8080
